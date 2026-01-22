@@ -23,6 +23,7 @@ cols = st.columns(3)
 for i, (col, row) in enumerate(zip(cols, random_movies.itertuples())):
     with col:
         st.image(row.Poster_Link, width=100)
+        st.write(row.Combined_Info)
         if st.button(row.Series_Title, key=i):
             movie_idx = row.index
 
@@ -59,5 +60,6 @@ for col, idx in zip(cols, top_movies):
         st.image(df.iloc[idx]['Poster_Link'], width=100)
         st.write(
             df.iloc[idx]['Series_Title'],
+            df.iloc[idx]['Combined_Info'],
             "\nLikability:", f"{round(similarities[idx]*100, 2)}%"
         )
